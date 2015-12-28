@@ -1,0 +1,12 @@
+
+.mynetwork {
+  width: 250px;
+  height: 300px;
+  border: 1px solid lightgray;
+}
+
+#mytext {
+  width: 400px;
+  height: 300px;
+  vertical-align:top;
+}

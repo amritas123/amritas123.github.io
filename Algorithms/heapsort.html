@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Heapsort</title>
+	<h1>Heapsort</h1>
+</head>
+<body onload="loadInfo()">
+	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="heapsort.js"></script>
+	<link href="heapsort.css" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="http://visjs.org/dist/vis.js"></script>
+	<script type="text/javascript" src="http://visjs.org/examples/network/exampleUtil.js"></script>
+  	<link href="http://visjs.org/dist/vis.css" rel="stylesheet" type="text/css" />
+  	<script type="text/javascript" src="tree.js"></script>
+
+	<div style="background-color:#FAEBD7; color:black; padding:5px;">
+		<p><b>Heapsort</b> is a comparison based sorting technique based on Binary Heap data structure. It is similar to selection sort where we first find the maximum element and place the maximum element at the end. We repeat the same process for remaining element.</p>
+
+		<p>The binary heap data structures is an array that can be viewed as a complete binary tree. Each node of the binary tree corresponds to an element of the array. The array is completely filled on all levels except possibly lowest.</p>
+
+		<p>Heap Sort Algorithm for sorting in increasing order:</p>
+		<ol>
+		  <li>Build a max heap from the input data.</li>
+		  <li>The largest item is stored at the root of the heap. Replace it with the last item of the heap followed by reducing the size of heap by 1. Finally, heapify the root of tree.</li>
+		  <li>Repeat above steps until size of heap is greater than 1.</li>
+		</ol>
+	</div>
+
+	<br>
+	<div style="background-color:#FFFFE0; color:black; padding:5px;">
+		<p><b>Steps and Time Complexity Analysis</b></p>
+		<p>Step 1: Build Max Heap from unordered array; <b>O(n)</b></p>
+		<p>Step 2: Find maximum element A[1]; <b>O(log n)</b></p>
+		<p>Step 3: Swap elements A[n] and A[1]:now max element is at end of  array; <b>O(log n)</b></p>
+		<p>Step 4: Discard node n from heap (by decrementing heap-size variable); <b>O(log n)</b></p>
+		<p>Step 5: New root may violate max heap property, but its children are max heaps. Run max_heapify to fix this; <b>O(log n)</b></p>
+		<p>Step 6: Go to step 2; <b>n times</b></p>
+		<p>Total Time: <b>O(n log n)</b></p>
+	</div>
+
+	<br>
+	<div style="width: 90%; display: table; margin-left: 20px">
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p>
+	        		<b>Step 1: Building the heap tree</b>
+					<p id="numbers"></p>
+					The array represented as a tree, complete but not ordered.
+				</p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork" style="display: table-cell;"></div>
+	    </div>
+	    
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p><b>Step 2: Compare the 8 with 0. Since 8 > 0, therefore do not swap.</b></p>
+	        	<p id="inputArray1"></p>
+	        	<p id="outputArray1"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork1" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p><b>Step 3: 5 is not less than 2, therefore compare 9 and 5. Since 9 > 5, therefore do not swap.</b></p>
+	        	<p id="inputArray2"></p>
+	        	<p id="outputArray2"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork2" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p><b>Step 4: 4 is not less than 3, therefore compare 1 and 4. Since 1 < 4, therefore swap.</b></p>
+	        	<p id="inputArray3"></p>
+	        	<p id="outputArray3"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork3" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p><b>Step 5: 4 is less than 9, therefore compare 6 and 9. Since 6 < 9, therefore swap.</b></p>
+	        	<p id="inputArray4"></p>
+	        	<p id="outputArray4"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork4" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p>Building the heap tree: The array represented as a tree, complete but not ordered.</p>
+	        	<p id="inputArray5"></p>
+	        	<p id="outputArray5"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork5" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p>Building the heap tree: The array represented as a tree, complete but not ordered.</p>
+	        	<p id="inputArray6"></p>
+	        	<p id="outputArray6"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork6" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p>Building the heap tree: The array represented as a tree, complete but not ordered.</p>
+	        	<p id="inputArray7"></p>
+	        	<p id="outputArray7"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork7" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p>Building the heap tree: The array represented as a tree, complete but not ordered.</p>
+	        	<p id="inputArray8"></p>
+	        	<p id="outputArray8"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork8" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p>Building the heap tree: The array represented as a tree, complete but not ordered.</p>
+	        	<p id="inputArray9"></p>
+	        	<p id="outputArray9"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork9" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p>Building the heap tree: The array represented as a tree, complete but not ordered.</p>
+	        	<p id="inputArray10"></p>
+	        	<p id="outputArray10"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork10" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p>Building the heap tree: The array represented as a tree, complete but not ordered.</p>
+	        	<p id="inputArray11"></p>
+	        	<p id="outputArray11"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork11" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p>Building the heap tree: The array represented as a tree, complete but not ordered.</p>
+	        	<p id="inputArray12"></p>
+	        	<p id="outputArray12"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork12" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p>Building the heap tree: The array represented as a tree, complete but not ordered.</p>
+	        	<p id="inputArray13"></p>
+	        	<p id="outputArray13"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork13" style="display: table-cell;"></div>
+	    </div>
+
+	    <br>
+	    <div style="display: table-row;">
+	        <div id="mytext" style="display: table-cell;"> 
+	        	<p>Building the heap tree: The array represented as a tree, complete but not ordered.</p>
+	        	<p id="inputArray14"></p>
+	        	<p id="outputArray14"></p>
+	        </div>
+	        <div class="mynetwork" id="mynetwork14" style="display: table-cell;"></div>
+	    </div>
+	</div>
+</body>
+
+</html> 
